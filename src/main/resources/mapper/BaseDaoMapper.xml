@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rabbitcrud.rabbitcrud.dao.BaseDaoMapper">
+    <sql id="searchTableData">
+        select
+        <if test="fields==null or fields==''">
+            *
+        </if>
+        <if test="fields!=null and fields!=''">
+         ${fields}
+        </if>
+        from ${tableName} t1
+        <if test="leftJoin!=null and leftJoin!=''">
+            ${leftJoin}
+        </if>
+        <if test="rightJoin!=null and rightJoin!=''">
+            ${rightJoin}
+        </if>
+        <if test="where!=null and where!=''">
+            ${where}
+        </if>
+        <if test="orderBy!=null and orderBy!=''">
+            ${orderBy}
+        </if>
+    </sql>
+    
+    <select id="searchConditionalList" resultType="java.util.Map" parameterType="java.util.Map">
+        <include refid="searchTableData"></include>
+    </select>
+    
+    <select id="searchConditionalMap" resultType="java.util.Map" parameterType="java.util.Map">
+        <include refid="searchTableData"></include>
+    </select>
+
+    <select id="getObjectById" resultType="java.util.Map">
+        select * from ${tableName} where ${primaryKey}=#{value}
+    </select>
+
+    <insert id="saveObject" parameterType="java.util.Map">
+        ${sqlContent}
+    </insert>
+
+    <update id="updateObject" parameterType="java.util.Map">
+        ${sqlContent}
+    </update>
+
+    <delete id="deleteObject" parameterType="java.util.Map">
+        delete t1 from ${tableName} t1
+        <if test="where!=null and where!=''">
+            ${where}
+        </if>
+    </delete>
+
+    <delete id="deleteObjectById">
+        delete from ${tableName} where ${primaryKey}=#{value}
+    </delete>
+</mapper>
