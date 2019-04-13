@@ -113,6 +113,7 @@ public class RabbitCrudApplicationTests {
         System.out.println("wangtao");
         System.out.println("王涛");
         System.out.println("杜晓宇");
+        System.out.println("测试");
     }
 
 }
