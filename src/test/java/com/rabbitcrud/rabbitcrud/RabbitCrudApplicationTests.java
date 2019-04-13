@@ -110,6 +110,7 @@ public class RabbitCrudApplicationTests {
 
     public static void main(String[] args) {
         System.out.println("王涛");
+        System.out.println("杜晓宇");
     }
 
 }
