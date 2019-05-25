@@ -582,7 +582,7 @@ public class ConditionalParameter implements Serializable {
         return columns;
     }
 
-    public void setColumns(Map<String, String[]> columns) {
+    /*public void setColumns(Map<String, String[]> columns) {
         this.columns = columns;
-    }
+    }*/
 }

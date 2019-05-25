@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
@@ -106,16 +107,38 @@ public class RabbitCrudApplicationTests {
         }else {
             System.out.println("删除失败");
         }*/
+
+       //连接查询测试
+        /*ConditionalParameter con=new ConditionalParameter(Content.class);
+        con.leftJoin(Type.class,"t1.typeID=t2.typeValNo");
+        con.whereEqualTo("t1.typeNo","IKLIFE");
+        con.setReturnFields("t1.*,t2.typeName,t2.typeValNo,t2.typeValName");
+        List<Map<String,Object>> result=baseService.searchConditionalList(con);
+        System.out.println("===============================开始测试===============================");
+        System.out.println("====================================================================================");
+        Optional.ofNullable(result).ifPresent(x->{
+            x.forEach(a->{
+                System.out.println(a.get("source").toString()+"--"+a.get("title")+"--"+a.get("typeName")+"--"+a.get("typeValNo")+"--"+a.get("typeValName"));
+            });
+        });
+        System.out.println("====================================================================================");
+        System.out.println("===============================结束测试===============================");*/
+
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         System.out.println("duxiaoyu");
         System.out.println("wangtao");
         System.out.println("王涛");
         System.out.println("杜晓宇");
         System.out.println("测试");
         System.out.println("why");
-    }
+
+        Map<String,Object> map=new HashMap<>();
+        map.put("a",1);
+        map.put("a",2);
+        System.out.println(map.get("a").toString());
+    }*/
 
 }
 
